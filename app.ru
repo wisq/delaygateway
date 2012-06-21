@@ -4,15 +4,15 @@ class AsyncTest < Sinatra::Base
   register Sinatra::Async
 
   def delay(secs)
-    EM.add_timer(secs) { body { "delayed for #{secs} seconds\r\n" } }
+    EM.add_timer(secs) { body { "delayed for #{"%.2f" % secs} seconds\r\n" } }
   end
 
   apost '/delay/:n' do |n|
-    delay(n.to_i)
+    delay(n.to_f)
   end
 
   apost '/test/cardserver' do
-    delay(rand(2..5))
+    delay(rand(2.0 .. 5.0))
   end
 end
 
