@@ -11,6 +11,10 @@ class AsyncTest < Sinatra::Base
     delay(n.to_f)
   end
 
+  apost '/delay/:x/:y' do |x, y|
+    delay(rand(x.to_f .. y.to_f))
+  end
+
   apost '/test/cardserver' do
     delay(rand(2.0 .. 5.0))
   end
