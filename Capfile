@@ -7,3 +7,7 @@ require 'bundler/capistrano'
 
 load 'deploy'
 load 'config/deploy'
+
+task :production do
+  # no-op
+end
